@@ -9,8 +9,11 @@ import { DashboardHeader } from "@/components/dashboard/DashboardHeader";
 import { ProjectGrid } from "@/components/dashboard/ProjectGrid";
 import { CreateProjectDialog } from "@/components/dashboard/CreateProjectDialog";
 
+// Import the Project type from ProjectCard to ensure consistency
+import type { Project } from "@/components/dashboard/ProjectCard";
+
 // Sample project data
-const sampleProjects = [
+const sampleProjects: Project[] = [
   {
     id: "1",
     title: "Travel Vlog Series",
@@ -47,17 +50,17 @@ const sampleProjects = [
 
 const Index = () => {
   const navigate = useNavigate();
-  const [projects, setProjects] = useState(sampleProjects);
+  const [projects, setProjects] = useState<Project[]>(sampleProjects);
   const [isCreateDialogOpen, setIsCreateDialogOpen] = useState(false);
   
   const handleCreateProject = (projectData: { title: string; description: string }) => {
-    const newProject = {
+    const newProject: Project = {
       id: (projects.length + 1).toString(),
       title: projectData.title,
       description: projectData.description,
       lastEdited: new Date().toISOString(),
       progress: 0,
-      stage: "ideation"
+      stage: "ideation" // This is now properly typed as one of the allowed values
     };
     
     setProjects([...projects, newProject]);
