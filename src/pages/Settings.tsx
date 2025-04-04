@@ -239,13 +239,14 @@ const Settings = () => {
               {activeTab !== "profile" && activeTab !== "notifications" && (
                 <div className="text-center py-16">
                   <div className="inline-flex items-center justify-center p-4 bg-gray-100 rounded-full mb-4">
-                    {tabs.find(tab => tab.id === activeTab)?.icon && (
-                      <tabs.find(tab => tab.id === activeTab)?.icon className="h-8 w-8 text-gray-600" />
-                    )}
+                    {(() => {
+                      const TabIcon = tabs.find(tab => tab.id === activeTab)?.icon;
+                      return TabIcon ? <TabIcon className="h-8 w-8 text-gray-600" /> : null;
+                    })()}
                   </div>
                   <h2 className="text-xl font-semibold mb-2">{tabs.find(tab => tab.id === activeTab)?.label} Settings</h2>
                   <p className="text-gray-600 max-w-md mx-auto">
-                    This section is under development. Check back soon for {tabs.find(tab => tab.id === activeTab)?.label.toLowerCase()} settings and options.
+                    This section is under development. Check back soon for {tabs.find(tab => tab.id === activeTab)?.label?.toLowerCase()} settings and options.
                   </p>
                 </div>
               )}
