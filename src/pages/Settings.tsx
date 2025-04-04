@@ -240,7 +240,7 @@ const Settings = () => {
                 <div className="text-center py-16">
                   <div className="inline-flex items-center justify-center p-4 bg-gray-100 rounded-full mb-4">
                     {tabs.find(tab => tab.id === activeTab)?.icon && (
-                      <tabs.find(tab => tab.id === activeTab)!.icon className="h-8 w-8 text-gray-600" />
+                      <tabs.find(tab => tab.id === activeTab)?.icon className="h-8 w-8 text-gray-600" />
                     )}
                   </div>
                   <h2 className="text-xl font-semibold mb-2">{tabs.find(tab => tab.id === activeTab)?.label} Settings</h2>
